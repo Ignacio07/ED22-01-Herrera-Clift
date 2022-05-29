@@ -1,4 +1,4 @@
-![Logo UCN]
+![Logo UCN](https://github.com/Ignacio07/ED22-01-Herrera-Clift/blob/main/Docs/Images/60x60-ucn-negro.png)
 # Informe Técnico
 ## Curso: Estructura de datos
 ### Detección y reidentificación de personas en secuencias de imágenes o video
