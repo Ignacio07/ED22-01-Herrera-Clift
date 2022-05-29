@@ -6,7 +6,7 @@
 - Camilo Clift (Coordinador)
 - Ignacio Herrera (Bitácora)
 ## Bitácora
-- [Ver Bitácora]
+- [Ver Bitácora](https://github.com/Ignacio07/ED22-01-Herrera-Clift/blob/main/Docs/Bitacora.md)
 ## Resumen
 
 Se requiere implementar un sistema de detección corporal en una imagen, haciendo uso de un algoritmo computacional y una biblioteca libre de visión artificial.
