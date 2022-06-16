@@ -24,6 +24,6 @@
 ## Documentos
 - [Reporte Técnico]
 ## Recursos Código Fuente
-- [Ver Recursos Código Fuente]
+- [Ver Recursos Código Fuente](https://github.com/Ignacio07/ED22-01-Herrera-Clift/tree/main/Resources)
 ## Código Fuente
-- [Ver Codigo Fuente](https://github.com/Ignacio07/ED22-01-Herrera-Clift/tree/main/src)
+- [Ver Código Fuente](https://github.com/Ignacio07/ED22-01-Herrera-Clift/tree/main/src)
