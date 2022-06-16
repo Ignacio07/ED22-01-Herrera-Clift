@@ -22,7 +22,7 @@
 >Se configura la biblioteca OpenCV en el entorno de desarrollo integrado (Visual Studio).
 
 ## Documentos
-- [Reporte Técnico]
+- [Reporte Técnico](https://github.com/Ignacio07/ED22-01-Herrera-Clift/blob/main/Docs/README.md)
 ## Recursos Código Fuente
 - [Ver Recursos Código Fuente](https://github.com/Ignacio07/ED22-01-Herrera-Clift/tree/main/Resources)
 ## Código Fuente
