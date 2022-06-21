@@ -10,14 +10,12 @@ class LinkedList {
 private:
 	const int DIFFERENT = 1700;
 	int counter = 0;
-	double euclideanDistance(Mat, Mat);
+	double euclideanDistance(int CentroideX, int CentroideY);
+	struct Nodo* header;
 public:
 	LinkedList() {
 		header = nullptr;
 	}
-	struct Nodo* header;
-	Nodo* insert(Nodo* header,Mat);
-	Nodo* LimpiarMemoria(Nodo* nodo);
-	void insert(Mat);
+	Nodo* insert(Nodo* header,Mat img);
 	~LinkedList();
 };
