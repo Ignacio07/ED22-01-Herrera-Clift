@@ -2,11 +2,13 @@
 #include <iomanip>
 #include <opencv2/opencv.hpp>
 
+#include "Persona.hpp"
+
 using namespace cv;
 using namespace std;
 class Nodo {
 public:
 	int key;
-	Mat image;
+	Persona persona;
 	Nodo* next;
 };
