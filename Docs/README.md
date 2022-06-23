@@ -117,7 +117,7 @@ Con el ejercicio de detección corporal realizado, y el resto de herramientas ut
 Se hace ingreso a la página web https://opencv.org en la cual se debe dirigir a la sección de Library y seleccionar la opción de releases en la cual se hace la descarga del instalador de OpenCV version 4.6.0
 ![OpenCV](https://github.com/Ignacio07/ED22-01-Herrera-Clift/blob/main/Docs/Images/OpenCV.png)
 
-Luego de la instalación por el instalador descargado anteriormente se debe añadir a las Variables de entorno del pc en PATH la dirección de opencv\build\x64\vc15\bin y opencv\build\x64\vc15\lib
+Luego de la instalación por el instalador descargado anteriormente se debe añadir a las Variables de entorno del pc en PATH la dirección de opencv\build\x64\vc15\bin y opencv\build\x64\vc15\lib la agregamos en la sección de C/C++, que correspondera a la carpeta "include" dentro de OpenCV, a continuación en la sección "linker", agregamos el directorio donde se encuentra la libreria de OpenCV, finalmente hacemos lo mismo, pero en el apartado "Input", con esto OpenCV ya esta configurado para nuestro proyecto.
 ![VariablesEntorno]
 
 ### Anexo B: Instalación de IDE y configuración librerías OpenCV
@@ -127,7 +127,7 @@ Luego de la instalación de Visual Studio se debera descargar la extensión de D
 ![C++]
 Cuando se tenga la extensión se debera cambiar la disposición del IDE para trabajar con 64 bits y hacerlo compatible con el OpenCV, finalmente se debera incluir los archivos de la biblioteca OpenCV en el proyecto
 ![VisualStudio]
-Para instalar OpenCV en el proyecto, primero debemos abrir las propiedades del mismo, luego agregamos un directorio en la sección de C/C++, que correspondera a la carpeta "include" dentro de OpenCV, a continuación en la sección "linker", agregamos el directorio donde se encuentra la libreria de OpenCV, finalmente hacemos lo mismo, pero en el apartado "Input", con esto OpenCV ya esta configurado para nuestro proyecto.
+
 ## Referencia
 
 ComputerVision. (s. f.). ComputerVision. Recuperado 15 de Junio de 2022, de https://www.computervision.zone/courses/opencv-cv/
