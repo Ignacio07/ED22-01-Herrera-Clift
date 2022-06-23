@@ -118,7 +118,9 @@ Se hace ingreso a la página web https://opencv.org en la cual se debe dirigir a
 ![OpenCV](https://github.com/Ignacio07/ED22-01-Herrera-Clift/blob/main/Docs/Images/OpenCV.png)
 
 Luego de la instalación por el instalador descargado anteriormente se debe añadir a las Variables de entorno del pc en PATH la dirección de opencv\build\x64\vc15\bin y opencv\build\x64\vc15\lib la agregamos en la sección de C/C++, que correspondera a la carpeta "include" dentro de OpenCV, a continuación en la sección "Vinculador", agregamos el directorio donde se encuentra la libreria de OpenCV, finalmente hacemos lo mismo, pero en el apartado "Entrada", con esto OpenCV ya esta configurado para nuestro proyecto.
-![VariablesEntorno]
+![VariablesEntorno](https://github.com/Ignacio07/ED22-01-Herrera-Clift/blob/main/Docs/Images/OpenCv1.png)
+![VariablesEntorno](https://github.com/Ignacio07/ED22-01-Herrera-Clift/blob/main/Docs/Images/OpenCV2.png)
+![VariablesEntorno](https://github.com/Ignacio07/ED22-01-Herrera-Clift/blob/main/Docs/Images/OpenCV3.png)
 
 ### Anexo B: Instalación de IDE y configuración librerías OpenCV
 Se hace ingreso a la página web del IDE Visual Studio https://visualstudio.microsoft.com/es/ donde se hizo descarga de Visual Studio Community 2022 
