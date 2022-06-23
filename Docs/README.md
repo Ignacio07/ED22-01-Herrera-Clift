@@ -124,11 +124,11 @@ Luego de la instalación por el instalador descargado anteriormente se debe aña
 
 ### Anexo B: Instalación de IDE y configuración librerías OpenCV
 Se hace ingreso a la página web del IDE Visual Studio https://visualstudio.microsoft.com/es/ donde se hizo descarga de Visual Studio Community 2022 
-![WebVisualStudio]
+![WebVisualStudio](https://github.com/Ignacio07/ED22-01-Herrera-Clift/blob/main/Docs/Images/Visual-pagina.png)
 Luego de la instalación de Visual Studio se debera descargar la extensión de Desarrollo para escritorio con C++
-![C++]
+![C++](https://github.com/Ignacio07/ED22-01-Herrera-Clift/blob/main/Docs/Images/CVisual.png)
 Cuando se tenga la extensión se debera cambiar la disposición del IDE para trabajar con 64 bits y hacerlo compatible con el OpenCV, finalmente se debera incluir los archivos de la biblioteca OpenCV en el proyecto
-![VisualStudio]
+![VisualStudio](https://github.com/Ignacio07/ED22-01-Herrera-Clift/blob/main/Docs/Images/x64.PNG)
 
 ## Referencia
 
