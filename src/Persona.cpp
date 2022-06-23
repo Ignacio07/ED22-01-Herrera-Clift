@@ -1,5 +1,6 @@
 #include "Persona.hpp"
 
+//Se crea la clase persona para determinar sus coordenadas.
 Persona::Persona(cv::Rect& r) {
     xComienzo = r.x;
     yComienzo = r.y;
