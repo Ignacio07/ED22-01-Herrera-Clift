@@ -2,20 +2,22 @@
 #include <iomanip>
 #include <opencv2/opencv.hpp>
 #include "Nodo.hpp"
+#include "Nodo.cpp"
+#include "Persona.hpp"
 
 using namespace cv;
 using namespace std;
 
+template <class T>
+
 class LinkedList {
 private:
-	const int DIFFERENT = 1700;
-	int counter = 0;
-	double euclideanDistance(int CentroideX, int CentroideY);
-	struct Nodo* header;
+	Nodo<T> *header;
+	int CantNodos;
+
 public:
-	LinkedList() {
-		header = nullptr;
-	}
-	Nodo* insert(Nodo* header,Mat img);
+	LinkedList();
 	~LinkedList();
+	void AgregarPersona(T);
+	void LimpiarMemoria();
 };
