@@ -121,13 +121,13 @@ Luego de la instalación por el instalador descargado anteriormente se debe aña
 ![VariablesEntorno]
 
 ### Anexo B: Instalación de IDE y configuración librerías OpenCV
-Se hace ingreso a la página web del IDE Visual Studio https://visualstudio.microsoft.com/es/ donde se hizo descarga de Visual Studio Community 2019 
+Se hace ingreso a la página web del IDE Visual Studio https://visualstudio.microsoft.com/es/ donde se hizo descarga de Visual Studio Community 2022 
 ![WebVisualStudio]
 Luego de la instalación de Visual Studio se debera descargar la extensión de Desarrollo para escritorio con C++
 ![C++]
 Cuando se tenga la extensión se debera cambiar la disposición del IDE para trabajar con 64 bits y hacerlo compatible con el OpenCV, finalmente se debera incluir los archivos de la biblioteca OpenCV en el proyecto
 ![VisualStudio]
-
+Para instalar OpenCV en el proyecto, primero debemos abrir las propiedades del mismo, luego agregamos un directorio en la sección de C/C++, que correspondera a la carpeta "include" dentro de OpenCV, a continuación en la sección "linker", agregamos el directorio donde se encuentra la libreria de OpenCV, finalmente hacemos lo mismo, pero en el apartado "Input", con esto OpenCV ya esta configurado para nuestro proyecto.
 ## Referencia
 
 ComputerVision. (s. f.). ComputerVision. Recuperado 15 de Junio de 2022, de https://www.computervision.zone/courses/opencv-cv/
