@@ -117,7 +117,7 @@ Con el ejercicio de detección corporal realizado, y el resto de herramientas ut
 Se hace ingreso a la página web https://opencv.org en la cual se debe dirigir a la sección de Library y seleccionar la opción de releases en la cual se hace la descarga del instalador de OpenCV version 4.6.0
 ![OpenCV](https://github.com/Ignacio07/ED22-01-Herrera-Clift/blob/main/Docs/Images/OpenCV.png)
 
-Luego de la instalación por el instalador descargado anteriormente se debe añadir a las Variables de entorno del pc en PATH la dirección de opencv\build\x64\vc15\bin y opencv\build\x64\vc15\lib la agregamos en la sección de C/C++, que correspondera a la carpeta "include" dentro de OpenCV, a continuación en la sección "linker", agregamos el directorio donde se encuentra la libreria de OpenCV, finalmente hacemos lo mismo, pero en el apartado "Input", con esto OpenCV ya esta configurado para nuestro proyecto.
+Luego de la instalación por el instalador descargado anteriormente se debe añadir a las Variables de entorno del pc en PATH la dirección de opencv\build\x64\vc15\bin y opencv\build\x64\vc15\lib la agregamos en la sección de C/C++, que correspondera a la carpeta "include" dentro de OpenCV, a continuación en la sección "Vinculador", agregamos el directorio donde se encuentra la libreria de OpenCV, finalmente hacemos lo mismo, pero en el apartado "Entrada", con esto OpenCV ya esta configurado para nuestro proyecto.
 ![VariablesEntorno]
 
 ### Anexo B: Instalación de IDE y configuración librerías OpenCV
