@@ -31,7 +31,7 @@
 ## 1. Introducción
 
 ### 1.1 Descripción del problema
-Se solicita un programa de sistema de vigilancia basado en reconocimiento corporal. En este se debera tener en cuenta la cantidad de tiempo que pasa cada persona frente a la camara independientemente de si es que esta desaparece del video en un momento determinado. Por ende se debera tener guardado por cada día la data (tiempo) de las personas que pasen por el frente de la camara y finalmente cuando se termine el video se debera desplegar los datos obtenidos en el día.
+Se solicita un programa de sistema de vigilancia basado en conteo de personas. En este se deberá tener en cuenta cuantas veces una determinada persona atraviesa una zona designada por hora. 
 
 ### 1.2 Objetivos
 **Objetivo General**
@@ -48,7 +48,7 @@ Construir un sistema de vigilancia de tráfico peatonal, el cuál a través de v
  
 
 ### 1.3 Solución Propuesta
-Se creará un programa el cual ocupando la biblioteca de visión artificial OpenCV reconozca el cuerpo de las diferentes personas que pasen frente a la camara.Se guardara la data (tiempo en camara y número de reconocimiento) de cada persona y cuando se finalice el video grabado desplegara una lista ordenada de mayor a menor con el número de reconocimiento y los intervalos de tiempo en el cual aparece la persona.
+Se creará un programa el cual ocupando la biblioteca de visión artificial OpenCV reconozca las diferentes personas que pasen frente a la camara. Se guardara la data (número de reconocimiento) de cada persona y cuando se finalice el video grabado desplegara una lista ordenada de mayor a menor con el número de reconocimiento y los intervalos de tiempo en el cual aparece la persona.
 
 ## 2. Materiales y métodos
 
@@ -67,7 +67,7 @@ También se requiere OpenCV, ésta es una biblioteca de código abierto que es m
 
 ### 2.2 Diseño
 
-Se usa una Lista Enlazada (LinkedList) la cual guardará los datos de las personas en el video (ID de personas).
+Se usará una Lista Enlazada (LinkedList) la cual guardará los datos de las personas en el video (ID de personas).
 
 ![DIAGRAMA CLASE](https://github.com/Ignacio07/ED22-01-Herrera-Clift/blob/main/Docs/Images/Diseño1.PNG)
 
@@ -85,7 +85,7 @@ Se carga HOGDescriptor:
         hog.setSVMDetector(HOGDescriptor::getDefaultPeopleDetector());
         hog_d.setSVMDetector(HOGDescriptor::getDaimlerPeopleDetector());
 ```
-Se itera por los cuerpos detectados y se destacan con un rectangulo rojo:
+Se itera por las personas detectadas y se destacan con un rectangulo rojo:
 
 ```
     for (vector<Persona>::iterator i = found.begin(); i != found.end(); ++i)
@@ -105,11 +105,14 @@ Se despliega la imagen:
        waitKey(0);
 ```
 ## 3. Resultados Obtenidos
-
+![Resultados](https://github.com/Ignacio07/ED22-01-Herrera-Clift/blob/main/Docs/Images/Resultado1.PNG)
+![Resultados](https://github.com/Ignacio07/ED22-01-Herrera-Clift/blob/main/Docs/Images/Resultado2.PNG)
+![Resultados](https://github.com/Ignacio07/ED22-01-Herrera-Clift/blob/main/Docs/Images/Resultado3.PNG)
 
 ## 4. Conclusiones
 La biblioteca de OpenCV abre un mar de posibilidades en cuánto a la resolución de problemas de identificación de patrones visuales. Además de que no requiere de mucho esfuerzo para instalarla y utilizarla.
-Con el ejercicio de detección corporal realizado, y el resto de herramientas utilizadas de OpenCV, además de lo poderoso que resulta C++, y que este es compatible con OpenCV, hay muchas aplicaciones en el área de la vigilancia de instalaciones en el que se podría desarrollar un sistema muy eficaz.
+Con el ejercicio de detección de personas, y el resto de herramientas utilizadas de OpenCV, además de lo poderoso que resulta C++, y que este es compatible con OpenCV, hay muchas aplicaciones en el área de la vigilancia de instalaciones en el que se podría desarrollar un sistema muy eficaz.
+
 ## Anexos
 
 ### Anexo A: Instalación librerías OpenCV
@@ -132,4 +135,4 @@ Cuando se tenga la extensión se debera cambiar la disposición del IDE para tra
 
 ## Referencia
 
-ComputerVision. (s. f.). ComputerVision. Recuperado 15 de Junio de 2022, de https://www.computervision.zone/courses/opencv-cv/
+BoostMyTool. (01/01/2022). Youtube. Recuperado 15 de Junio de 2022, de https://www.youtube.com/watch?v=unSce_GPwto&lc=z23adnkzmkfucje4p04t1aokg3ksytasstznr4hhw3sirk0h00410
