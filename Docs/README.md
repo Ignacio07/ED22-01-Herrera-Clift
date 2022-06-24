@@ -28,6 +28,7 @@
 > 
 > Se crea un sistema que analiza cuantas personas entran y salen de una zona específica.
 
+![Resultados](https://github.com/Ignacio07/ED22-01-Herrera-Clift/blob/main/Docs/Images/Resultado1.PNG)
 ## 1. Introducción
 
 ### 1.1 Descripción del problema
@@ -110,8 +111,7 @@ Se despliega la imagen:
 ![Resultados](https://github.com/Ignacio07/ED22-01-Herrera-Clift/blob/main/Docs/Images/Resultado3.PNG)
 
 ## 4. Conclusiones
-La biblioteca de OpenCV abre un mar de posibilidades en cuánto a la resolución de problemas de identificación de patrones visuales. Además de que no requiere de mucho esfuerzo para instalarla y utilizarla.
-Con el ejercicio de detección de personas, y el resto de herramientas utilizadas de OpenCV, además de lo poderoso que resulta C++, y que este es compatible con OpenCV, hay muchas aplicaciones en el área de la vigilancia de instalaciones en el que se podría desarrollar un sistema muy eficaz.
+Con la ayuda de la biblioteca de visión artificial llamada OpenCV, se logró crear un sistema de detección de peatones, las cuales se enmarcan con un rectangulo rojo, a su vez con ayuda de listas enlazadas (Linked List), se pudó realizar conteo de personas, pero no se logro diferenciar a los peatones. Por otro lado, apredimos a utilizar de mejor manera Visual Studio y los lenguajes tanto de C como C++.
 
 ## Anexos
 
