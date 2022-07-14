@@ -12,3 +12,5 @@
 | 18/JUN | OBJ-03 | Avance en el codigo para analizar personas entrando a una zona especifica | CCliftS | 1 hora | 1 hora 30 min |
 | 19/JUN | OBJ-04 | Avance en el codigo para analizar personas saliendo a una zona especifica | CCliftS | 1 hora | 1 hora 30 min |
 | 21/JUN | OBJ-05 | Avance en el codigo para desplegar información | CCliftS | 30 min | 50 min |
+| 14/JUL | OBJ-05 | Creación de Árbol Binario de Busqueda (ABB) para guardar datos | CCliftS | 30 min | 50 min |
+| 14/JUL | OBJ-06 | Creación de Menu para usuarios | Ignacio07 | 30 min | 15 min |
