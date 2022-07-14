@@ -73,7 +73,7 @@ También se requiere OpenCV, ésta es una biblioteca de código abierto que es m
 
 Se usará un arbol binario (ABB) el cual guardará los centroides de las personas en el video (ID de personas).
 
-![DIAGRAMA CLASE](https://github.com/Ignacio07/ED22-01-Herrera-Clift/blob/main/Docs/Images/ABB.PNG)
+![DIAGRAMA CLASE](https://github.com/Ignacio07/ED22-01-Herrera-Clift/blob/main/Docs/Images/ABB1.PNG)
 
 ### 2.3 Implementación
 Como detector corporal, se utiliza la función de OpenCV HOGDescriptor, y se configura en Visual Studio en el lenguaje C++.
