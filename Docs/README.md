@@ -23,6 +23,8 @@
 > Se configura el entorno de desarrollo integrado Visual Studio para utilizar en él la biblioteca de visión artificial.
 >
 > Se configura la biblioteca OpenCV en el entorno de desarrollo integrado (Visual Studio).
+>
+> Se crea un arbol binario donde se guardaran los nodos de datos.
 > 
 > Se crea un sistema que detecta y destaca en un rectángulo rojo todas los cuerpos humanos visibles en una imagen de formato .jpg .
 > 
@@ -46,6 +48,7 @@ Construir un sistema de vigilancia de tráfico peatonal, el cuál a través de v
 3. Analizar cuantas personas entran a una zona especifica.
 4. Analizar cuantas personas salen de una zona especifica.
 5. Procesar y desplegar la información requerida por el usuario.
+6. Creación de un menú.
  
 
 ### 1.3 Solución Propuesta
