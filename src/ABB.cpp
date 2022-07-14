@@ -6,7 +6,7 @@
 using namespace std;
 
 /**
- * Inserta la coordenada en el arbol le asigna un identificador.
+ * Inserta la coordenada en el arboL.
  *
  * @param coordenada (int) centroide de la imagen
  */
