@@ -11,24 +11,15 @@
 
 #include "Detector.hpp"
 #include "Persona.hpp"
-#include "LinkedList.hpp"
+#include "ABB.hpp"
 
 
 using namespace cv;
-using namespace std;
-    
+using namespace std; //se agrega std en los cout ya que lanzo error de tipo
+
 int main(int argc, char** argv)
 {
-    // Comentado ya que al crearla da error de tipo 
-    /*
-    // Linked List que contendra las personas entrando a la zona designada
-    LinkedList<Nodo<Persona>> LinkedEntran;
-    // Linked List que contendra las personas saliendo de la zona designada
-    LinkedList<Nodo<Persona>> LinkedSalen;
-    */
-
-    int entran = 0;
-    int salen = 0;
+    ABB ABB;
 
     // Se obtiene la hora de inicio del programa
     time_t now = time(0);
@@ -44,14 +35,16 @@ int main(int argc, char** argv)
     imagesStr.push_back("Resources/image1679.png");
     imagesStr.push_back("Resources/image1680.png");
 
-    cout << "imagesStr = { ";
+    std::cout << "imagesStr = { ";
     for (string n : imagesStr) {
-        cout << n << ", ";
+        std::cout << n << ", ";
     }
-    cout << "};" << endl;
+    std::cout << "};" << endl;
 
     Detector detector;
     Mat imagen;
+
+    ABB.insert(0,175); //SE AGREGA RAIZ PARA PODER DISTINGUIR LOS QUE ENTRAN Y SALEN
 
     //Se recorre el vector imageStr
     for (string im : imagesStr) {
@@ -61,27 +54,13 @@ int main(int argc, char** argv)
         {
             Persona& p = *i;
 
-            // Comentado ya que al crearlo da error de tipo
-            //Nodo<Persona> nodo(p,0);
-
-            cout << "(" << p.getXComienzo() << ", " << p.getYComienzo() << ")" << endl;
+            std::cout << "(" << p.getXComienzo() << ", " << p.getYComienzo() << ")" << endl;
             rectangle(imagen, cv::Point(p.getXComienzo(), p.getYComienzo()), cv::Point(p.getXFin(), p.getYFin()), cv::Scalar(0, 0, 255), 1);
             circle(imagen, cv::Point(p.getXCentro(), p.getYCentro()), 3, cv::Scalar(255, 255, 0), 2);
             circle(imagen, cv::Point(p.getXComienzo(), p.getYComienzo()), 3, cv::Scalar(255, 0, 255), 2);
             circle(imagen, cv::Point(p.getXFin(), p.getYFin()), 3, cv::Scalar(0, 255, 255), 2);
-            
-            //Se compara la imagen con la posicion de la linea para saber si entra
-            if (p.getXComienzo() < 175) {
-                if (p.getXCentro() > 175) {
-                    entran++;// falla por no saber diferenciar a una persona de otra
-                }
-            }
-            //Se compara la imagen con la posicion de la linea para saber si sale
-            if (p.getXComienzo() > 175) {
-                if (p.getXCentro() < 175) {
-                    salen++;
-                }
-            }
+
+            ABB.insert(p.getXComienzo(),p.getXCentro());
         }
 
         //Se crea una linea para poder determinar si entra o sale de una determinada zona
@@ -97,8 +76,8 @@ int main(int argc, char** argv)
     int HFin = timeinfo.tm_hour;
 
     //Se despliega el flujo de persona sin diferenciarlos
-    cout << "Entran:" << entran << endl;
-    cout << "Salen:" << salen << endl;
+    std::cout << "Entran:" << ABB.Entran() << endl;
+    std::cout << "Salen:" << ABB.Salen() << endl;
 
     while (true) {
         char c = (char)waitKey(10);
@@ -111,19 +90,19 @@ int main(int argc, char** argv)
     //Se despliega el flujo de persona por hora
     if (TiempoTotal > 0) {
 
-        if(entran >= 0) {
-            cout << "Personas que entran por hora:" << entran/TiempoTotal<< endl;
+        if(ABB.Entran() >= 0) {
+            std::cout << "Personas que entran por hora:" << ABB.Entran() /TiempoTotal<< endl;
         }
-        if (salen >= 0) {
-            cout << "Personas que salen por hora:" << salen/TiempoTotal << endl;
+        if (ABB.Salen() >= 0) {
+            std::cout << "Personas que salen por hora:" << ABB.Salen() /TiempoTotal << endl;
         }
     }
     else {
-        if (entran >= 0) {
-            cout << "Personas que entran por hora:" << entran << endl;
+        if (ABB.Entran() >= 0) {
+            std::cout << "Personas que entran por hora:" << ABB.Entran() << endl;
         }
-        if (salen >= 0) {
-            cout << "Personas que salen por hora:" << salen << endl;
+        if (ABB.Salen() >= 0) {
+            std::cout << "Personas que salen por hora:" << ABB.Salen() << endl;
         }
     }
     return 0;
