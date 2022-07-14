@@ -28,7 +28,7 @@
 > 
 > Se crea un sistema que detecta y destaca en un rectángulo rojo todas los cuerpos humanos visibles en una imagen de formato .jpg .
 > 
-> Se crea un sistema que analiza cuantas personas entran y salen de una zona específica.
+> Se crea un sistema que analiza cuantas personas entran y salen de una zona específica a través de un arbol binario.
 
 ![Resultados](https://github.com/Ignacio07/ED22-01-Herrera-Clift/blob/main/Docs/Images/Resultado1.PNG)
 ## 1. Introducción
@@ -71,9 +71,9 @@ También se requiere OpenCV, ésta es una biblioteca de código abierto que es m
 
 ### 2.2 Diseño
 
-Se usará una Lista Enlazada (LinkedList) la cual guardará los datos de las personas en el video (ID de personas).
+Se usará un arbol binario (ABB) el cual guardará los centroides de las personas en el video (ID de personas).
 
-![DIAGRAMA CLASE](https://github.com/Ignacio07/ED22-01-Herrera-Clift/blob/main/Docs/Images/Diseño1.PNG)
+![DIAGRAMA CLASE](https://github.com/Ignacio07/ED22-01-Herrera-Clift/blob/main/Docs/Images/ABB.PNG)
 
 ### 2.3 Implementación
 Como detector corporal, se utiliza la función de OpenCV HOGDescriptor, y se configura en Visual Studio en el lenguaje C++.
@@ -108,13 +108,104 @@ Se despliega la imagen:
        imshow("People detector", imagen);
        waitKey(0);
 ```
+Por otro lado implementamos el arbol binario (ABB) para guardar los datos:
+```
+void ABB::insert(int coordenadaInicio, int centroide) {
+    root = insert(root, coordenadaInicio, centroide);
+}
+Nodo* ABB::insert(Nodo* node, int coordenadaInicio, int centroide) {
+    //Si el árbol no tiene hijos
+    if (node == nullptr) {
+        node = new Nodo();
+        node->CentroideX = centroide;
+        node->left = nullptr;
+        node->right = nullptr;
+        return node;
+    }
+    else {
+        if (coordenadaInicio > 175 && centroide < 175) {
+            node->left = insert(node->left, coordenadaInicio, centroide);
+        }
+        if (coordenadaInicio < 175 && centroide > 175) {
+            node->right = insert(node->right, coordenadaInicio, centroide);
+        }
+    }
+    return node;
+}
+Nodo* ABB::LimpiarMemoria(Nodo* node)
+{
+    if (node == nullptr)
+    {
+        return node;
+    }
+    else
+    {
+        Nodo* aux = node;
+        node = LimpiarMemoria(node->left);
+        node = LimpiarMemoria(node->right);
+        delete(aux);
+        cout << "Nodo Eliminado" << endl;
+    }
+}
+
+int ABB::Entran() {
+    if (root) {
+        int count = 0;
+        stack<Nodo*> s;
+        if (root->right != NULL) {
+            s.push(root->right);
+            while (!s.empty()) {
+                count++;
+                Nodo* curr = s.top();
+                s.pop();
+                if (curr->left != NULL) {
+                    s.push(curr->left);
+                }
+                if (curr->right != NULL) {
+                    s.push(curr->right);
+                }
+            }
+            return count;
+        }
+    }
+    return 0;
+}
+
+int ABB::Salen() {
+    if (root) {
+        int count = 0;
+        stack<Nodo*> s;
+        if (root->left != NULL) {
+            s.push(root->left);
+            while (!s.empty()) {
+                count++;
+                Nodo* curr = s.top();
+                s.pop();
+                if (curr->left != NULL) {
+                    s.push(curr->left);
+                }
+                if (curr->right != NULL) {
+                    s.push(curr->right);
+                }
+            }
+            return count;
+        }
+    }
+    return 0;
+}
+
+ABB::~ABB(void)
+{
+    cout << "Arbol Eliminado" << endl;
+}
+```
 ## 3. Resultados Obtenidos
 ![Resultados](https://github.com/Ignacio07/ED22-01-Herrera-Clift/blob/main/Docs/Images/Resultado1.PNG)
 ![Resultados](https://github.com/Ignacio07/ED22-01-Herrera-Clift/blob/main/Docs/Images/Resultado2.PNG)
 ![Resultados](https://github.com/Ignacio07/ED22-01-Herrera-Clift/blob/main/Docs/Images/Resultado3.PNG)
 
 ## 4. Conclusiones
-Con la ayuda de la biblioteca de visión artificial llamada OpenCV, se logró crear un sistema de detección de peatones, las cuales se enmarcan con un rectangulo rojo, a su vez con ayuda de listas enlazadas (Linked List), se pudó realizar conteo de personas, pero no se logro diferenciar a los peatones. Por otro lado, apredimos a utilizar de mejor manera Visual Studio y los lenguajes tanto de C como C++.
+Con la ayuda de la biblioteca de visión artificial llamada OpenCV, se logró crear un sistema de detección de peatones, las cuales se enmarcan con un rectangulo rojo, a su vez con ayuda de un arbol binario (ABB), se pudó realizar conteo de personas, pero no se logro diferenciar a los peatones. Por otro lado, apredimos a utilizar de mejor manera Visual Studio y los lenguajes tanto de C como C++.
 
 ## Anexos
 
