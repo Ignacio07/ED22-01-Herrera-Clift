@@ -1,28 +1,12 @@
-#ifndef NODE_H
-#define NODE_H
-
-#include <iostream>
-#include <iomanip>
-#include <opencv2/opencv.hpp>
-
-#include "Persona.hpp"
-
-using namespace cv;
-using namespace std;
-template <class T>
-
-class Nodo
-{
-public:
-    
-    T persona;
-    int key;
-    Nodo* next;
-
-    Nodo();
-    Nodo(T,int key);
-    ~Nodo();
-
-    void delete_all();
+#ifndef UCN_TALLER_EDATOS_2021_1_BINARYSEARCHTREENODE_H
+#define UCN_TALLER_EDATOS_2021_1_BINARYSEARCHTREENODE_H
+/**
+ * Clase que almacena la imagen y el identificador de la cara
+ */
+    class Nodo {
+    public:
+        int CentroideX;
+        Nodo* left;
+        Nodo* right;
 };
-#endif
+#endif //UCN_TALLER_EDATOS_2021_1_BINARYSEARCHTREENODE_H#pragma once
