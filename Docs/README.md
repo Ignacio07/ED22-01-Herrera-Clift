@@ -108,6 +108,15 @@ Se despliega la imagen:
        imshow("People detector", imagen);
        waitKey(0);
 ```
+Creamos la clase nodo:
+```
+class Nodo {
+public:
+    int CentroideX;
+    Nodo* left;
+    Nodo* right;
+};
+```
 Por otro lado implementamos el arbol binario (ABB) para guardar los datos:
 ```
 void ABB::insert(int coordenadaInicio, int centroide) {
