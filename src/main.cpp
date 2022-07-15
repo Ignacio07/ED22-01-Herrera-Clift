@@ -16,6 +16,24 @@
 using namespace cv;
 using namespace std;
 
+/*
+* Funcion encargada de cargar Arbol Binario con las coordenadas del centroide de las personas encontradas en las imagenes
+*/
+void CargarArbol(Detector detector, Mat imagen,ABB* abb,vector<string>imagesStr) {
+    for (string im : imagesStr) {
+        imagen = imread(im);
+        vector<Persona> found = detector.detect(imagen);
+        for (vector<Persona>::iterator i = found.begin(); i != found.end(); ++i)
+        {
+            Persona& p = *i;
+            abb->insert(p.getXComienzo(), p.getXCentro());
+        }
+    }
+}
+
+/*
+* Funcion encargada de dibujar un rectangulo rojo alrededor de las personas reconocidads en las imagenes
+*/
 void DetectarPersonas(vector<String>imagesStr) {
     for (string im : imagesStr) {
         Detector detector;
@@ -41,8 +59,10 @@ void DetectarPersonas(vector<String>imagesStr) {
         waitKey(0);
     }
 }
-
-void MenuGuardia(ABB ABB, vector<String> imagesStr, int Hinicio, int Hfin) {
+/*
+* Menu con los requerimientos para el guardia
+*/
+void MenuGuardia(ABB* ABB, vector<String> imagesStr, int Hinicio, int Hfin) {
     int respuesta;
     int TiempoTotal = Hfin - Hinicio;
     cout << "Elija una de las opciones: " << "\n" << "1.- Detectar personas" << "\n" << "2.- Contar Personas que entran" << "\n" << "3.- Contar Personas que salen" << "\n" << "4.- Velocidad entran" << "\n" << "5.- Velocidad Salen" << "\n" << "6.- Salir" << endl;
@@ -56,25 +76,25 @@ void MenuGuardia(ABB ABB, vector<String> imagesStr, int Hinicio, int Hfin) {
             DetectarPersonas(imagesStr);
         }
         if (respuesta == 2) {
-            cout << "Entran:" << ABB.Entran() << endl;
+            cout << "Entran:" << ABB->Entran() << endl;
         }
         if (respuesta == 3) {
-            cout << "Salen:" << ABB.Salen() << endl;
+            cout << "Salen:" << ABB->Salen() << endl;
         }
         if (respuesta == 4) {
             if (TiempoTotal > 0) {
-                cout << "Personas que entran por hora:" << ABB.Entran() / TiempoTotal << endl;
+                cout << "Personas que entran por hora:" << ABB->Entran() / TiempoTotal << endl;
             }
             else {
-                cout << "Personas que entran por hora:" << ABB.Entran() << endl;
+                cout << "Personas que entran por hora:" << ABB->Entran() << endl;
             }
         }
         if (respuesta == 5) {
             if (TiempoTotal > 0) {
-                cout << "Personas que entran por hora:" << ABB.Salen() / TiempoTotal << endl;
+                cout << "Personas que entran por hora:" << ABB->Salen() / TiempoTotal << endl;
             }
             else {
-                cout << "Personas que entran por hora:" << ABB.Salen() << endl;
+                cout << "Personas que entran por hora:" << ABB->Salen() << endl;
             }
         }
         cout << "Elija una de las opciones: " << "\n" << "1.- Detectar personas" << "\n" << "2.- Contar Personas que entran" << "\n" << "3.- Contar Personas que salen" << "\n" << "4.- Velocidad entran" << "\n" << "5.- Velocidad Salen" << "\n" << "6.- Salir" << endl;
@@ -82,8 +102,10 @@ void MenuGuardia(ABB ABB, vector<String> imagesStr, int Hinicio, int Hfin) {
     }
 
 }
-
-void MenuAdmin(vector<string>* imagesStr) {
+/*
+* Menu con los requerimientos para el administrador
+*/
+void MenuAdmin(vector<string>* imagesStr, ABB* abb) {
     int respuesta;
     cout << "Bienvenido al menu de Administrador" << "\n" << "Elija que secuencia de imagenes va a ser analizada" << "\n" << "1.- Video1" << "\n" << "2.- Video2" << "\n" << "3.- Video3" << endl;
     cin >> respuesta;
@@ -92,25 +114,50 @@ void MenuAdmin(vector<string>* imagesStr) {
         cin >> respuesta;
     }
     if (respuesta == 1) {
-        imagesStr->push_back("Resources/Video1/image0292.png");
-        imagesStr->push_back("Resources/Video1/image0293.png");
-        imagesStr->push_back("Resources/Video1/image1679.png");
-        imagesStr->push_back("Resources/Video1/image1680.png");
+        if (imagesStr->size() > 0) {
+            imagesStr->clear();
+            abb->LimpiarMemoria();
+            imagesStr->push_back("Resources/Video1/image0292.png");
+            imagesStr->push_back("Resources/Video1/image0293.png");
+            imagesStr->push_back("Resources/Video1/image1679.png");
+            imagesStr->push_back("Resources/Video1/image1680.png");
+        }
+        else {
+            imagesStr->push_back("Resources/Video1/image0292.png");
+            imagesStr->push_back("Resources/Video1/image0293.png");
+            imagesStr->push_back("Resources/Video1/image1679.png");
+            imagesStr->push_back("Resources/Video1/image1680.png");
+        }
     }
     if (respuesta == 2) {
-        imagesStr->push_back("Resources/Video2/image0292.png");
-        imagesStr->push_back("Resources/Video2/image0293.png");
+        if (imagesStr->size() > 0) {
+            imagesStr->clear();
+            abb->LimpiarMemoria();
+            imagesStr->push_back("Resources/Video2/image0292.png");
+            imagesStr->push_back("Resources/Video2/image0293.png");
+        }
+        else {
+            imagesStr->push_back("Resources/Video2/image0292.png");
+            imagesStr->push_back("Resources/Video2/image0293.png");
+        }
     }
     if (respuesta == 3) {
-        imagesStr->push_back("Resources/Video3/image1679.png");
-        imagesStr->push_back("Resources/Video3/image1680.png");
+        if(imagesStr->size() > 0){
+            imagesStr->clear();
+            abb->LimpiarMemoria();
+            imagesStr->push_back("Resources/Video3/image1679.png");
+            imagesStr->push_back("Resources/Video3/image1680.png");
+        }
+        else {
+            imagesStr->push_back("Resources/Video3/image1679.png");
+            imagesStr->push_back("Resources/Video3/image1680.png");
+        }
     }
 }
 
-int main(int argc, char** argv)
-{
-    ABB ABB;
-
+int main(int argc, char** argv){
+    ABB abb;
+    ABB* pabb=&abb;
     // Se obtiene la hora de inicio del programa
     time_t now = time(0);
     struct tm timeinfo;
@@ -124,7 +171,7 @@ int main(int argc, char** argv)
     Detector detector;
     Mat imagen;
 
-    ABB.insert(0, 175); //SE AGREGA RAIZ PARA PODER DISTINGUIR LOS QUE ENTRAN Y SALEN
+    pabb->insert(0, 175); //SE AGREGA RAIZ PARA PODER DISTINGUIR LOS QUE ENTRAN Y SALEN
 
     //Se obtiene la hora de finalizacion del programa
     int HFin = timeinfo.tm_hour;
@@ -141,21 +188,12 @@ int main(int argc, char** argv)
                 cout << "No hay un video cargado" << endl;
             }
             else {
-                MenuGuardia(ABB, imagesStr, HInicio, HFin);
+                MenuGuardia(pabb, imagesStr, HInicio, HFin);
             }
         }
         if (respuesta == 2) {
-            MenuAdmin(pimagesStr);
-        }
-        //Se recorre el vector imageStr para cargar arbol binario
-        for (string im : *pimagesStr) {
-            imagen = imread(im);
-            vector<Persona> found = detector.detect(imagen);
-            for (vector<Persona>::iterator i = found.begin(); i != found.end(); ++i)
-            {
-                Persona& p = *i;
-                ABB.insert(p.getXComienzo(), p.getXCentro());
-            }
+            MenuAdmin(pimagesStr, pabb);
+            CargarArbol(detector,imagen,pabb,imagesStr);
         }
         cout << "Elija una de las opciones: " << "\n" << "1.- Guardia" << "\n" << "2.- Administrador" << "\n" << "3.- Salir" << endl;
         cin >> respuesta;
