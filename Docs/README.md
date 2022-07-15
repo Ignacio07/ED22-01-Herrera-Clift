@@ -30,7 +30,7 @@
 > 
 > Se crea un sistema que analiza cuantas personas entran y salen de una zona específica a través de un arbol binario.
 
-![Resultados](https://github.com/Ignacio07/ED22-01-Herrera-Clift/blob/main/Docs/Images/Resultado1.PNG)
+![Resultados](https://github.com/Ignacio07/ED22-01-Herrera-Clift/blob/main/Docs/Images/FOTO1.PNG)
 ## 1. Introducción
 
 ### 1.1 Descripción del problema
@@ -209,9 +209,7 @@ ABB::~ABB(void)
 }
 ```
 ## 3. Resultados Obtenidos
-![Resultados](https://github.com/Ignacio07/ED22-01-Herrera-Clift/blob/main/Docs/Images/Resultado1.PNG)
-![Resultados](https://github.com/Ignacio07/ED22-01-Herrera-Clift/blob/main/Docs/Images/Resultado2.PNG)
-![Resultados](https://github.com/Ignacio07/ED22-01-Herrera-Clift/blob/main/Docs/Images/Resultado3.PNG)
+![Resultados](https://github.com/Ignacio07/ED22-01-Herrera-Clift/blob/main/Docs/Images/FOTO1.PNG)
 ![Resultados](https://github.com/Ignacio07/ED22-01-Herrera-Clift/blob/main/Docs/Images/MENU1.PNG)
 ![Resultados](https://github.com/Ignacio07/ED22-01-Herrera-Clift/blob/main/Docs/Images/MENUADMIN.PNG)
 ![Resultados](https://github.com/Ignacio07/ED22-01-Herrera-Clift/blob/main/Docs/Images/MENUGUARDIA.PNG)
