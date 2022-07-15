@@ -6,7 +6,7 @@
 using namespace std;
 
 /**
- * Inserta la coordenada en el arboL.
+ * Inserta la coordenada en el arbol le asigna un identificador.
  *
  * @param coordenada (int) centroide de la imagen
  */
@@ -32,22 +32,30 @@ Nodo* ABB::insert(Nodo* node, int coordenadaInicio,int centroide) {
     }
     return node;
 }
-Nodo* ABB::LimpiarMemoria(Nodo* node)
-{
-    if (node == nullptr)
-    {
-        return node;
-    }
-    else
-    {
-        Nodo* aux = node;
-        node = LimpiarMemoria(node->left);
-        node = LimpiarMemoria(node->right);
-        delete(aux);
-        cout << "Nodo Eliminado" << endl;
+/*
+* Elimina los nodos del arbol
+*/
+void ABB::LimpiarMemoria(){
+    if (root){
+        stack<Nodo*> s;
+        s.push(root);
+        while (!s.empty()) {
+            Nodo* curr = s.top();
+            s.pop();
+            if (curr->left != NULL) {
+                s.push(curr->left);
+            }
+            if (curr->right != NULL) {
+                s.push(curr->right);
+            }
+            curr->left = nullptr;
+            curr->right = nullptr;
+        }
     }
 }
-
+/**
+* Recorre el lado derecho del ABB para saber cuantas personas entran.
+**/
 int ABB::Entran() {
     if (root) {
         int count = 0;
@@ -70,7 +78,9 @@ int ABB::Entran() {
     }
     return 0;
 }
-
+/**
+* Recorre el lado izquierdo del ABB para saber cuantas personas salen.
+**/
 int ABB::Salen() {
     if (root) {
         int count = 0;
