@@ -13,7 +13,7 @@ public:
 
     Nodo* insert(Nodo* node, int coordenadaIncio,int centroide);
 
-    Nodo* LimpiarMemoria(Nodo* node);
+    void LimpiarMemoria();
 
     void insert(int coordenadaInicio,int centroide);
 
