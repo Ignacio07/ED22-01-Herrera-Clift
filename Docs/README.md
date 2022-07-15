@@ -212,6 +212,11 @@ ABB::~ABB(void)
 ![Resultados](https://github.com/Ignacio07/ED22-01-Herrera-Clift/blob/main/Docs/Images/Resultado1.PNG)
 ![Resultados](https://github.com/Ignacio07/ED22-01-Herrera-Clift/blob/main/Docs/Images/Resultado2.PNG)
 ![Resultados](https://github.com/Ignacio07/ED22-01-Herrera-Clift/blob/main/Docs/Images/Resultado3.PNG)
+![Resultados](https://github.com/Ignacio07/ED22-01-Herrera-Clift/blob/main/Docs/Images/MENU1.PNG)
+![Resultados](https://github.com/Ignacio07/ED22-01-Herrera-Clift/blob/main/Docs/Images/MENUADMIN.PNG)
+![Resultados](https://github.com/Ignacio07/ED22-01-Herrera-Clift/blob/main/Docs/Images/MENUGUARDIA.PNG)
+![Resultados](https://github.com/Ignacio07/ED22-01-Herrera-Clift/blob/main/Docs/Images/ENTRAN-SALEN.PNG)
+![Resultados](https://github.com/Ignacio07/ED22-01-Herrera-Clift/blob/main/Docs/Images/VELOCIDAD-ENTRA-SALE.PNG)
 
 ## 4. Conclusiones
 Con la ayuda de la biblioteca de visión artificial llamada OpenCV, se logró crear un sistema de detección de peatones, las cuales se enmarcan con un rectangulo rojo, a su vez con ayuda de un arbol binario (ABB), se pudó realizar conteo de personas, pero no se logro diferenciar a los peatones. Por otro lado, apredimos a utilizar de mejor manera Visual Studio y los lenguajes tanto de C como C++.
