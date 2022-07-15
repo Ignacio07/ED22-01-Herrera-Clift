@@ -209,11 +209,16 @@ ABB::~ABB(void)
 }
 ```
 ## 3. Resultados Obtenidos
-![Resultados](https://github.com/Ignacio07/ED22-01-Herrera-Clift/blob/main/Docs/Images/FOTO1.PNG)
+![Resultados](https://github.com/Ignacio07/ED22-01-Herrera-Clift/blob/main/Docs/Images/FOTO1.PNG) 
+
 ![Resultados](https://github.com/Ignacio07/ED22-01-Herrera-Clift/blob/main/Docs/Images/MENU1.PNG)
+
 ![Resultados](https://github.com/Ignacio07/ED22-01-Herrera-Clift/blob/main/Docs/Images/MENUADMIN.PNG)
+
 ![Resultados](https://github.com/Ignacio07/ED22-01-Herrera-Clift/blob/main/Docs/Images/MENUGUARDIA.PNG)
+
 ![Resultados](https://github.com/Ignacio07/ED22-01-Herrera-Clift/blob/main/Docs/Images/ENTRAN-SALEN.PNG)
+
 ![Resultados](https://github.com/Ignacio07/ED22-01-Herrera-Clift/blob/main/Docs/Images/VELOCIDAD-ENTRA-SALE.PNG)
 
 ## 4. Conclusiones
