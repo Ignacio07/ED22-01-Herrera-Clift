@@ -14,3 +14,4 @@
 | 21/JUN | OBJ-05 | Avance en el codigo para desplegar información | CCliftS | 30 min | 50 min |
 | 14/JUL | OBJ-05 | Creación de Árbol Binario de Busqueda (ABB) para guardar datos | CCliftS | 30 min | 50 min |
 | 14/JUL | OBJ-06 | Creación de Menu para usuarios | Ignacio07 | 30 min | 15 min |
+| 15/JUL | OBJ-06 | Mejora de Menu pasa usuarios | CCliftS | 50 min | 1 hora |
