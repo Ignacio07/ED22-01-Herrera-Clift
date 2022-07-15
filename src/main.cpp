@@ -13,8 +13,8 @@
 #include "Persona.hpp"
 #include "ABB.hpp"
 
-
 using namespace cv;
+using namespace std;
 
 void MenuGuardia(ABB ABB, vector<String> imagesStr, int Hinicio, int Hfin) {
     int respuesta;
@@ -27,6 +27,7 @@ void MenuGuardia(ABB ABB, vector<String> imagesStr, int Hinicio, int Hfin) {
     }
     while (respuesta != 6) {
         if (respuesta == 1) {
+            //DetectarPersonas(imagesStr);
             for (string im : imagesStr) {
                 Detector detector;
                 Mat imagen;
@@ -35,8 +36,6 @@ void MenuGuardia(ABB ABB, vector<String> imagesStr, int Hinicio, int Hfin) {
                 for (vector<Persona>::iterator i = found.begin(); i != found.end(); ++i)
                 {
                     Persona& p = *i;
-
-                    std::cout << "(" << p.getXComienzo() << ", " << p.getYComienzo() << ")" << endl;
                     rectangle(imagen, cv::Point(p.getXComienzo(), p.getYComienzo()), cv::Point(p.getXFin(), p.getYFin()), cv::Scalar(0, 0, 255), 1);
                     circle(imagen, cv::Point(p.getXCentro(), p.getYCentro()), 3, cv::Scalar(255, 255, 0), 2);
                     circle(imagen, cv::Point(p.getXComienzo(), p.getYComienzo()), 3, cv::Scalar(255, 0, 255), 2);
@@ -54,25 +53,25 @@ void MenuGuardia(ABB ABB, vector<String> imagesStr, int Hinicio, int Hfin) {
             }
         }
         if (respuesta == 2) {
-            std::cout << "Entran:" << ABB.Entran() << endl;
+            cout << "Entran:" << ABB.Entran() << endl;
         }
         if (respuesta == 3) {
-            std::cout << "Salen:" << ABB.Salen() << endl;
+            cout << "Salen:" << ABB.Salen() << endl;
         }
         if (respuesta == 4) {
             if (TiempoTotal > 0) {
-                std::cout << "Personas que entran por hora:" << ABB.Entran() / TiempoTotal << endl;
+                cout << "Personas que entran por hora:" << ABB.Entran() / TiempoTotal << endl;
             }
             else {
-                std::cout << "Personas que entran por hora:" << ABB.Entran() << endl;
+                cout << "Personas que entran por hora:" << ABB.Entran() << endl;
             }
         }
         if (respuesta == 5) {
             if (TiempoTotal > 0) {
-                std::cout << "Personas que entran por hora:" << ABB.Salen() / TiempoTotal << endl;
+                cout << "Personas que entran por hora:" << ABB.Salen() / TiempoTotal << endl;
             }
             else {
-                std::cout << "Personas que entran por hora:" << ABB.Salen() << endl;
+                cout << "Personas que entran por hora:" << ABB.Salen() << endl;
             }
         }
         cout << "Elija una de las opciones: " << "\n" << "1.- Detectar personas" << "\n" << "2.- Contar Personas que entran" << "\n" << "3.- Contar Personas que salen" << "\n" << "4.- Velocidad entran" << "\n" << "5.- Velocidad Salen" << "\n" << "6.- Salir" << endl;
@@ -106,6 +105,30 @@ void DetectarPersonas(vector<String>imagesStr) {
     }
 }
 
+void MenuAdmin(vector<string>* imagesStr) {
+    int respuesta;
+    cout << "Bienvenido al menu de Administrador" << "\n" << "Elija que secuencia de imagenes va a ser analizada" << "\n" << "1" << "\n" << "2" << "\n" << "3" << endl;
+    cin >> respuesta;
+    while (respuesta != 1 && respuesta != 2 && respuesta != 3) {
+        cout << "Bienvenido al menu de Administrador" << "\n" << "Elija que secuencia de imagenes va a ser analizada" << "\n" << "1" << "\n" << "2" << "\n" << "3" << endl;
+        cin >> respuesta;
+    }
+    if (respuesta == 1) {
+        imagesStr->push_back("Resources/Video1/image0292.png");
+        imagesStr->push_back("Resources/Video1/image0293.png");
+        imagesStr->push_back("Resources/Video1/image1679.png");
+        imagesStr->push_back("Resources/Video1/image1680.png");
+    }
+    if (respuesta == 2) {
+        imagesStr->push_back("Resources/Video2/image0292.png");
+        imagesStr->push_back("Resources/Video2/image0293.png");
+    }
+    if (respuesta == 3) {
+        imagesStr->push_back("Resources/Video3/image1679.png");
+        imagesStr->push_back("Resources/Video3/image1680.png");
+    }
+}
+
 int main(int argc, char** argv)
 {
     ABB ABB;
@@ -118,38 +141,46 @@ int main(int argc, char** argv)
     int HInicio = timeinfo.tm_hour;
 
     vector<string> imagesStr;
-    // Se Cargan todos los archivos del directorio automáticamente
-    imagesStr.push_back("Resources/image0292.png");
-    imagesStr.push_back("Resources/image0293.png");
-    imagesStr.push_back("Resources/image1679.png");
-    imagesStr.push_back("Resources/image1680.png");
+    vector<string>* pimagesStr=&imagesStr;
 
     Detector detector;
     Mat imagen;
 
     ABB.insert(0, 175); //SE AGREGA RAIZ PARA PODER DISTINGUIR LOS QUE ENTRAN Y SALEN
 
-    //Se recorre el vector imageStr para cargar arbol binario
-    for (string im : imagesStr) {
-        imagen = imread(im);
-        vector<Persona> found = detector.detect(imagen);
-        for (vector<Persona>::iterator i = found.begin(); i != found.end(); ++i)
-        {
-            Persona& p = *i;
-            ABB.insert(p.getXComienzo(), p.getXCentro());
-        }
-    }
     //Se obtiene la hora de finalizacion del programa
     int HFin = timeinfo.tm_hour;
     int respuesta;
-    cout << "Elija una de las dos opciones: " << "\n" << "1.- Guardia" << "\n" << "2.- Administrador"<<endl;
+    cout << "Elija una de las opciones: " << "\n" << "1.- Guardia" << "\n" << "2.- Administrador"<< "\n" << "3.- Salir" << endl;
     cin >> respuesta;
-    while (respuesta != 1 && respuesta != 2) {
-        cout << "Elija una de las dos opciones: " << "\n" << "1.- Guardia" << "\n" << "2.- Administrador"<<endl;
+    while (respuesta != 1 && respuesta != 2 && respuesta!=3) {
+        cout << "Elija una de las dos opciones: " << "\n" << "1.- Guardia" << "\n" << "2.- Administrador"<< "\n" << "3.- Salir"<<endl;
         cin >> respuesta;
     }
-    if (respuesta == 1) {
-        MenuGuardia(ABB, imagesStr, HInicio, HFin);
+    while (respuesta != 3) {
+        if (respuesta == 1) {
+            if (imagesStr.size() == 0) {
+                cout << "No hay un video cargado" << endl;
+            }
+            else {
+                MenuGuardia(ABB, imagesStr, HInicio, HFin);
+            }
+        }
+        if (respuesta == 2) {
+            MenuAdmin(pimagesStr);
+        }
+        //Se recorre el vector imageStr para cargar arbol binario
+        for (string im : *pimagesStr) {
+            imagen = imread(im);
+            vector<Persona> found = detector.detect(imagen);
+            for (vector<Persona>::iterator i = found.begin(); i != found.end(); ++i)
+            {
+                Persona& p = *i;
+                ABB.insert(p.getXComienzo(), p.getXCentro());
+            }
+        }
+        cout << "Elija una de las opciones: " << "\n" << "1.- Guardia" << "\n" << "2.- Administrador" << "\n" << "3.- Salir" << endl;
+        cin >> respuesta;
     }
     return 0;
 }
