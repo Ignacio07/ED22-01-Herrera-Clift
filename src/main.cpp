@@ -16,6 +16,32 @@
 using namespace cv;
 using namespace std;
 
+void DetectarPersonas(vector<String>imagesStr) {
+    for (string im : imagesStr) {
+        Detector detector;
+        Mat imagen;
+        imagen = imread(im);
+        vector<Persona> found = detector.detect(imagen);
+        for (vector<Persona>::iterator i = found.begin(); i != found.end(); ++i)
+        {
+            Persona& p = *i;
+            rectangle(imagen, cv::Point(p.getXComienzo(), p.getYComienzo()), cv::Point(p.getXFin(), p.getYFin()), cv::Scalar(0, 0, 255), 1);
+            circle(imagen, cv::Point(p.getXCentro(), p.getYCentro()), 3, cv::Scalar(255, 255, 0), 2);
+            circle(imagen, cv::Point(p.getXComienzo(), p.getYComienzo()), 3, cv::Scalar(255, 0, 255), 2);
+            circle(imagen, cv::Point(p.getXFin(), p.getYFin()), 3, cv::Scalar(0, 255, 255), 2);
+        }
+
+        //Se crea una linea para poder determinar si entra o sale de una determinada zona
+        Point p1(175, 0), p2(175, 300);// VERTICAL: p1(175,0), p2(175, 300) / HORIZONTAL: p1(0,140), p2(400,140)
+        int thickness = 1;
+        line(imagen, p1, p2, Scalar(0, 255, 255), thickness, LINE_8);
+
+        //Se muestra la imagen
+        imshow("People detector", imagen);
+        waitKey(0);
+    }
+}
+
 void MenuGuardia(ABB ABB, vector<String> imagesStr, int Hinicio, int Hfin) {
     int respuesta;
     int TiempoTotal = Hfin - Hinicio;
@@ -27,30 +53,7 @@ void MenuGuardia(ABB ABB, vector<String> imagesStr, int Hinicio, int Hfin) {
     }
     while (respuesta != 6) {
         if (respuesta == 1) {
-            //DetectarPersonas(imagesStr);
-            for (string im : imagesStr) {
-                Detector detector;
-                Mat imagen;
-                imagen = imread(im);
-                vector<Persona> found = detector.detect(imagen);
-                for (vector<Persona>::iterator i = found.begin(); i != found.end(); ++i)
-                {
-                    Persona& p = *i;
-                    rectangle(imagen, cv::Point(p.getXComienzo(), p.getYComienzo()), cv::Point(p.getXFin(), p.getYFin()), cv::Scalar(0, 0, 255), 1);
-                    circle(imagen, cv::Point(p.getXCentro(), p.getYCentro()), 3, cv::Scalar(255, 255, 0), 2);
-                    circle(imagen, cv::Point(p.getXComienzo(), p.getYComienzo()), 3, cv::Scalar(255, 0, 255), 2);
-                    circle(imagen, cv::Point(p.getXFin(), p.getYFin()), 3, cv::Scalar(0, 255, 255), 2);
-                }
-
-                //Se crea una linea para poder determinar si entra o sale de una determinada zona
-                Point p1(175, 0), p2(175, 300);// VERTICAL: p1(175,0), p2(175, 300) / HORIZONTAL: p1(0,140), p2(400,140)
-                int thickness = 1;
-                line(imagen, p1, p2, Scalar(0, 255, 255), thickness, LINE_8);
-
-                //Se muestra la imagen
-                imshow("People detector", imagen);
-                waitKey(0);
-            }
+            DetectarPersonas(imagesStr);
         }
         if (respuesta == 2) {
             cout << "Entran:" << ABB.Entran() << endl;
@@ -79,38 +82,13 @@ void MenuGuardia(ABB ABB, vector<String> imagesStr, int Hinicio, int Hfin) {
     }
 
 }
-void DetectarPersonas(vector<String>imagesStr) {
-    for (string im : imagesStr) {
-        Detector detector;
-        Mat imagen;
-        imagen = imread(im);
-        vector<Persona> found = detector.detect(imagen);
-        for (vector<Persona>::iterator i = found.begin(); i != found.end(); ++i)
-        {
-            Persona& p = *i;
-            rectangle(imagen, cv::Point(p.getXComienzo(), p.getYComienzo()), cv::Point(p.getXFin(), p.getYFin()), cv::Scalar(0, 0, 255), 1);
-            circle(imagen, cv::Point(p.getXCentro(), p.getYCentro()), 3, cv::Scalar(255, 255, 0), 2);
-            circle(imagen, cv::Point(p.getXComienzo(), p.getYComienzo()), 3, cv::Scalar(255, 0, 255), 2);
-            circle(imagen, cv::Point(p.getXFin(), p.getYFin()), 3, cv::Scalar(0, 255, 255), 2);
-        }
-
-        //Se crea una linea para poder determinar si entra o sale de una determinada zona
-        Point p1(175, 0), p2(175, 300);// VERTICAL: p1(175,0), p2(175, 300) / HORIZONTAL: p1(0,140), p2(400,140)
-        int thickness = 1;
-        line(imagen, p1, p2, Scalar(0, 255, 255), thickness, LINE_8);
-
-        //Se muestra la imagen
-        imshow("People detector", imagen);
-        waitKey(0);
-    }
-}
 
 void MenuAdmin(vector<string>* imagesStr) {
     int respuesta;
-    cout << "Bienvenido al menu de Administrador" << "\n" << "Elija que secuencia de imagenes va a ser analizada" << "\n" << "1" << "\n" << "2" << "\n" << "3" << endl;
+    cout << "Bienvenido al menu de Administrador" << "\n" << "Elija que secuencia de imagenes va a ser analizada" << "\n" << "1.- Video1" << "\n" << "2.- Video2" << "\n" << "3.- Video3" << endl;
     cin >> respuesta;
     while (respuesta != 1 && respuesta != 2 && respuesta != 3) {
-        cout << "Bienvenido al menu de Administrador" << "\n" << "Elija que secuencia de imagenes va a ser analizada" << "\n" << "1" << "\n" << "2" << "\n" << "3" << endl;
+        cout << "Bienvenido al menu de Administrador" << "\n" << "Elija que secuencia de imagenes va a ser analizada" << "\n" << "1.- Video1" << "\n" << "2.- Video2" << "\n" << "3.- Video3" << endl;
         cin >> respuesta;
     }
     if (respuesta == 1) {
