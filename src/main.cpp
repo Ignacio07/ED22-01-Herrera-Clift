@@ -91,10 +91,10 @@ void MenuGuardia(ABB* ABB, vector<String> imagesStr, int Hinicio, int Hfin) {
         }
         if (respuesta == 5) {
             if (TiempoTotal > 0) {
-                cout << "Personas que entran por hora:" << ABB->Salen() / TiempoTotal << endl;
+                cout << "Personas que salen por hora:" << ABB->Salen() / TiempoTotal << endl;
             }
             else {
-                cout << "Personas que entran por hora:" << ABB->Salen() << endl;
+                cout << "Personas que salen por hora:" << ABB->Salen() << endl;
             }
         }
         cout << "Elija una de las opciones: " << "\n" << "1.- Detectar personas" << "\n" << "2.- Contar Personas que entran" << "\n" << "3.- Contar Personas que salen" << "\n" << "4.- Velocidad entran" << "\n" << "5.- Velocidad Salen" << "\n" << "6.- Salir" << endl;
